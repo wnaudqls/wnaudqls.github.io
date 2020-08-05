@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript" src="https://www.gstatic.com/firebasejs/4.6.1/firebase-app.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/firebasejs/4.6.1/firebase-messaging.js">
+</script>
+<script type="text/javascript"src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script>
+  /*
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBreRAioJ9DISlnDlQO8rzfGOYD8pCL6uU",
+    authDomain: "test-f0dc0.firebaseapp.com",
+    databaseURL: "https://test-f0dc0.firebaseio.com",
+    projectId: "test-f0dc0",
+    storageBucket: "test-f0dc0.appspot.com",
+    messagingSenderId: "605115953099",
+    appId: "1:605115953099:web:f2363af13e42807f3f504e",
+    measurementId: "G-P8C6854YH3"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();*/
+</script>
+
+
+
+<script>
+    // Initialize Firebase
+
+
+ 
+    var config = {
+   	 apiKey: "AIzaSyBreRAioJ9DISlnDlQO8rzfGOYD8pCL6uU",
+    authDomain: "test-f0dc0.firebaseapp.com",
+    databaseURL: "https://test-f0dc0.firebaseio.com",
+    projectId: "test-f0dc0",
+    storageBucket: "test-f0dc0.appspot.com",
+    messagingSenderId: "605115953099",
+    appId: "1:605115953099:web:f2363af13e42807f3f504e",
+    measurementId: "G-P8C6854YH3"
+  };
+    firebase.initializeApp(config);
+ 
+    const messaging = firebase.messaging();
+
+    //token 값 알아내기
+    messaging.requestPermission()
+        .then(function(permission){
+            console.log(permission + " : Have permission");
+            return messaging.getToken();
+        })
+        .then(function(token){
+            console.log('token : ' + token);
+			$('#_token').html(token);
+        })
+        .catch(function(arr){
+            console.log("Error Occured");
+			console.log(arr);
+        });
+    /*
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/firebase-messaging-sw.js')
+          .then(service => console.log('service worker installed :', service))
+          .catch(err => console.error('Error', err));
+      }*/
+
+</script>
+<!-- 
+
+
+plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT: web root 경로
+
+
+ -->
+</html>
