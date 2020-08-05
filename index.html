@@ -5,6 +5,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	
+	<input type="text" id="bigone">
 
 </body>
 <script type="text/javascript" src="https://www.gstatic.com/firebasejs/4.6.1/firebase-app.js"></script>
@@ -71,6 +73,10 @@
           .then(service => console.log('service worker installed :', service))
           .catch(err => console.error('Error', err));
       }*/
+	
+	var bigone = document.getElementById('bigone');
+	var ref = firebase.database().ref.child('text');
+	ref.on('value', snap => bigone.value = snap.val());
 
 </script>
 <!-- 
